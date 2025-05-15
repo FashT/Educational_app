@@ -1,4 +1,5 @@
 import 'package:educational_app/screens/resources/media.dart';
+import 'package:educational_app/screens/styles/appstyles.dart';
 import 'package:educational_app/widget/appbar_avatar.dart';
 import 'package:educational_app/widget/appbar_icon.dart';
 import 'package:educational_app/widget/appbar_text.dart';
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,33 +21,21 @@ class HomeScreen extends StatelessWidget {
               AppbarText(text: 'Hello\nAlexandar!'),
               Stack(
                 children: [
-                  AppBarAvatar(imgs: AppImgs.studentImgs,),
+                  AppBarAvatar(imgs: AppImgs.studentImgs),
                   Padding(
                     padding: const EdgeInsets.only(left: 35),
 
-                    child: AppBarIcon(icons: Icons.qr_code)
+                    child: AppBarIcon(icons: Icons.qr_code),
                   ),
                 ],
               ),
             ],
           ),
-          Text(
-            "Social Studies",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              // color: Colors.black.withOpacity(0.5),
-            ),
-          ),
-          Text(
-            "Exam Preparation",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: Colors.black.withValues(alpha: 0.5),
-            ),
-          ),
-
+          SizedBox(height: 40),
+          Text("Social Studies", style: AppStyles.headLine1),
+        
+          Text("Exam Preparation", style: AppStyles.headLine1),
+          SizedBox(height: 50),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -77,34 +66,42 @@ class HomeScreen extends StatelessWidget {
                     "Your recent score",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
+                  SizedBox(height: 10),
                 ],
               ),
-              SizedBox(height: 5),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Row(
-                    spacing: 10,
-                    children: [
-                      Text(
-                        "More Details",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      spacing: 10,
+                      children: [
+                        Text(
+                          "More Details",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      Icon(Icons.arrow_outward, size: 20, color: Colors.white),
-                    ],
+                        Icon(
+                          Icons.arrow_outward,
+                          size: 20,
+                          color: AppStyles.textColor2,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Row(
             spacing: 10,
             children: [
@@ -112,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppStyles.textColor2,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Column(
@@ -149,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppStyles.textColor2,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Column(
@@ -186,28 +183,28 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(height: 5),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             alignment: Alignment.topCenter,
             height: 200,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
+              color: AppStyles.textColor2,
+              borderRadius: BorderRadius.circular(24),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  height: 16,
+                  height: 40,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    //controller: ,
                     children:
                         itemListed
                             .map(
                               (item) => Padding(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 2,
+                                  horizontal: 4,
+                                  vertical: 8,
                                 ),
                                 child: Text(
                                   item,
@@ -224,16 +221,16 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '1hr 17 mins',
+                      '3h 17 mins',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text('Overall time spent'),
                   ],
                 ),
-                SizedBox(height: 2),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -260,7 +257,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       '28',
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -278,16 +275,15 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
 List<String> itemListed = [
   ' Economics',
   'Biology',
+  'Music',
+  'Art',
   'Maths',
-  'Maths',
-  'Maths',
-  'Maths',
-  'Maths',
-  'Maths',
+  'English',
+  'Microbiology',
+  'Account',
 ];
 
 
